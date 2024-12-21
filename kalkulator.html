@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+<style>
+  :root {
+  --primary: #4F46E5;  /* Warna biru ungu */
+  --dark: #1E293B;     /* Warna gelap abu-abu biru */
+  --white: #F9FAFB;    /* Putih lembut */
+  --accent: #F59E0B;   /* Warna oranye terang untuk aksen */
+  --secondary: #6B7280;/* Abu-abu sedang */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  box-sizing: border-box;
+  background-image: linear-gradient(to bottom right, #A78BFA, #4F46E5, #4338CA);
+  overflow-x: hidden;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+section {
+  width: 100wh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 .5rem;
+}
+
+section .container {
+  width: 100%;
+  max-width: 326px;
+  background-color: var(--dark);
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  border: 2px solid var(--white);
+}
+
+section .container .container-display {
+  max-width: 100%;
+  min-height: 10rem;
+  border: 1px solid var(--primary);
+  background-color: #022022;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  word-break: break-all;
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+section .container .container-display h3 {
+  font-size: 2rem;
+  color: white;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-align: justify;
+}
+
+
+
+section .container .container-numpad {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem .5rem;
+}
+
+section .container .container-numpad button {
+  width: 22%;
+  height: 4.5rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  background-color: var(--primary);
+  color: var(--dark);
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+  outline: 0;
+  border: 0;
+}
+
+section .container .container-numpad button.symbol {
+  background-color: #065F46;
+  color: var(--white);
+}
+
+section .container .container-numpad button#clear {
+  background-color: crimson;
+  color: var(--white);
+}
+
+section .container .container-numpad button:active {
+  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9);
+}
+</style>
+  <title>Farrel | Calculator</title>
+</head>
+
+<body>
+
+  <section>
+
+    <div class="container">
+
+      <div class="container-display">
+        <h3 id="display"></h3>
+      </div>
+
+      <div class="container-numpad">
+
+        <button type=" button" id="number" value="7">7</button>
+        <button type="button" id="number" value="8">8</button>
+        <button type="button" id="number" value="9">9</button>
+        <button type="button" id="plus" class="symbol">+</button>
+
+        <button type=" button" id="number" value="4">4</button>
+        <button type="button" id="number" value="5">5</button>
+        <button type="button" id="number" value="6">6</button>
+        <button type="button" id="minus" class="symbol">-</button>
+
+        <button type=" button" id="number" value="1">1</button>
+        <button type="button" id="number" value="2">2</button>
+        <button type="button" id="number" value="3">3</button>
+        <button type="button" id="times" class="symbol">×</button>
+
+        <button type=" button" id="clear">C</button>
+        <button type="button" id="number" value="0">0</button>
+        <button type="button" id="result" class="symbol">=</button>
+        <button type="button" id="equal" class="symbol">÷</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+
+<script>
+
+const display = document.getElementById("display");
+
+const number = document.querySelectorAll("#number");
+
+const plus = document.getElementById("plus");
+const minus = document.getElementById("minus");
+const times = document.getElementById("times");
+const equal = document.getElementById("equal");
+const result = document.getElementById("result");
+const clear = document.getElementById("clear");
+
+number.forEach((res) => {
+  res.addEventListener("click", () => {
+    display.innerHTML += res.value;
+  });
+});
+
+plus.addEventListener("click", () => {
+  display.innerHTML += plus.textContent;
+});
+
+minus.addEventListener("click", () => {
+  display.innerHTML += minus.textContent;
+});
+
+times.addEventListener("click", () => {
+  display.innerHTML += times.textContent;
+});
+
+equal.addEventListener("click", () => {
+  display.innerHTML += equal.textContent;
+});
+
+result.addEventListener("click", () => {
+  let res = display.textContent.replaceAll("×", "*");
+  res = res.replaceAll("÷", "/");
+  display.innerHTML = eval(res);
+});
+
+clear.addEventListener("click", () => {
+  display.innerHTML = "";
+});
+
+</script>
+
+</html>
